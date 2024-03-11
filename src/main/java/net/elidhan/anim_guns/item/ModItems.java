@@ -530,7 +530,7 @@ public class ModItems {
 			"amr_classic",
 			35,
 			28,
-			5,
+			1,
 			HEAVY_RIFLE_BULLET,
 			85,
 			new float[] {0.0625f, 0.0625f},
