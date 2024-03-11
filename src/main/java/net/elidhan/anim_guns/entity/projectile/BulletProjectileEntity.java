@@ -19,7 +19,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.level.block.BarrierBlock;
+import net.minecraft.world.block.BarrierBlock;
 
 public class BulletProjectileEntity extends PersistentProjectileEntity
 {
