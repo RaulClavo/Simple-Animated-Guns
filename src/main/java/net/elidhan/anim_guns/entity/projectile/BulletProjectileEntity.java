@@ -101,7 +101,7 @@ public class BulletProjectileEntity extends PersistentProjectileEntity
             float volumeAdjust = this.pelletGroupCount > 1 ? MathUtils.clamp((1.0f/(float)this.pelletGroupCount), 0.2f, 1.0f) : 1.0f;
             this.getEntityWorld().playSound(null, blockHitResult.getBlockPos(), this.getEntityWorld().getBlockState(blockHitResult.getBlockPos()).getSoundGroup().getBreakSound(), SoundCategory.BLOCKS, volumeAdjust, 1.0f);
             
-            if (block not instanceof BarrierBlock;)
+            if (!(block instanceof BarrierBlock))
                 {
                 ((ServerWorld)this.getEntityWorld()).spawnParticles(new BlockStateParticleEffect(ParticleTypes.BLOCK, this.getEntityWorld().getBlockState(blockHitResult.getBlockPos())), blockHitResult.getPos().getX(), blockHitResult.getPos().getY(), blockHitResult.getPos().getZ(), 5, 0.0, 0.0, 0.0, 0.5f);
                 }
