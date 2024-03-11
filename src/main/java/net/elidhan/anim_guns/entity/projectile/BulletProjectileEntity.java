@@ -19,6 +19,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.level.block.BarrierBlock
 
 public class BulletProjectileEntity extends PersistentProjectileEntity
 {
@@ -97,16 +98,13 @@ public class BulletProjectileEntity extends PersistentProjectileEntity
         if (!this.getEntityWorld().isClient())
         {
             Block block = this.getWorld().getBlockState(blockHitResult.getBlockPos()).getBlock();
-            if(block instanceof AbstractGlassBlock || block instanceof PaneBlock)
-            {
-                this.getWorld().breakBlock(blockHitResult.getBlockPos(), true, null, 512);
-            }
-            else
-            {
-                float volumeAdjust = this.pelletGroupCount > 1 ? MathUtils.clamp((1.0f/(float)this.pelletGroupCount), 0.2f, 1.0f) : 1.0f;
-                this.getEntityWorld().playSound(null, blockHitResult.getBlockPos(), this.getEntityWorld().getBlockState(blockHitResult.getBlockPos()).getSoundGroup().getBreakSound(), SoundCategory.BLOCKS, volumeAdjust, 1.0f);
-            }
-            ((ServerWorld)this.getEntityWorld()).spawnParticles(new BlockStateParticleEffect(ParticleTypes.BLOCK, this.getEntityWorld().getBlockState(blockHitResult.getBlockPos())), blockHitResult.getPos().getX(), blockHitResult.getPos().getY(), blockHitResult.getPos().getZ(), 5, 0.0, 0.0, 0.0, 0.5f);
+            float volumeAdjust = this.pelletGroupCount > 1 ? MathUtils.clamp((1.0f/(float)this.pelletGroupCount), 0.2f, 1.0f) : 1.0f;
+            this.getEntityWorld().playSound(null, blockHitResult.getBlockPos(), this.getEntityWorld().getBlockState(blockHitResult.getBlockPos()).getSoundGroup().getBreakSound(), SoundCategory.BLOCKS, volumeAdjust, 1.0f);
+            
+            if (Block block =! BarrierBlock)
+                {
+                ((ServerWorld)this.getEntityWorld()).spawnParticles(new BlockStateParticleEffect(ParticleTypes.BLOCK, this.getEntityWorld().getBlockState(blockHitResult.getBlockPos())), blockHitResult.getPos().getX(), blockHitResult.getPos().getY(), blockHitResult.getPos().getZ(), 5, 0.0, 0.0, 0.0, 0.5f);
+                }
         }
         BlockState blockState = this.getWorld().getBlockState(blockHitResult.getBlockPos());
         blockState.onProjectileHit(this.getWorld(), blockState, blockHitResult, this);
